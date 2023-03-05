@@ -16,7 +16,8 @@ const thoughtSchema = new Schema (
             },
             username: {
                 type: String,
-                required: true
+                required: true,
+                ref: 'User'
             },
             reactions: [reactionSchema]
         },
@@ -29,7 +30,7 @@ const thoughtSchema = new Schema (
         }
 )
 
-reactionSchema.virtual('reactionCount').get(function() {
+thoughtSchema.virtual('reactionCount').get(function() {
     return this.reactions.length;
 });
 
