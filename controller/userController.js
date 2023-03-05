@@ -32,8 +32,8 @@ module.exports = {
       },
       //update user by __id
     updateUser(req,res){
-      User.findOneAndUpdate({_id: req.param.userId},{$set: req.body})
-      .then((user)=> !user ? res.status(404).json({messgae: "No User with that ID"}) : res.json(user)
+      User.findOneAndUpdate({_id: req.params.userId},{$set: req.body})
+      .then((user)=> !user ? res.status(404).json({messgae: "No User with that ID, update failed"}) : res.json(user)
       ).catch((err)=> {
         res.status(500).json(err);
       })
