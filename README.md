@@ -31,7 +31,9 @@ AS A social media startup
 I WANT an API for my social network that uses a NoSQL database
 SO THAT my website can handle large amounts of unstructured data
 ```
+[WALKTHROUGHS USERS HERE](https://drive.google.com/file/d/1wT_cTWTwkcrRCfbX54bWb6oO-oBgz5Li/view)
 
+[WALKTHROUGHS THOUGHTS HERE](https://drive.google.com/file/d/1Vaz02vUegJwcnq1XgucUSJ6jD1WTRzMF/view)
 
 The following animations show examples of the application's API routes being tested in Insomnia.
 
