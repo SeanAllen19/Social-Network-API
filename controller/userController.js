@@ -39,17 +39,17 @@ module.exports = {
       })
     },
 
-    deleteUser(req,res) {
-      User.findOneAndDelete({_id: req.params.userId})
-      .then((user)=> {
-        if(!user) {
+  deleteUser(req, res) {
+    User.findOneAndDelete({ _id: req.params.userId })
+      .then((user) => {
+        if (!user) {
           res.status(400).send("ID does not exsist")
         }
-        // return Thought.deleteMany({_id: {$in: user.thoughts}});
+        return Thought.deleteMany({ _id: { $in: user.thoughts } });
       })
-      .then(() => res.json({message: "User FOUND! Deleted from list"}))
+      .then(() => res.json({ message: "User FOUND! Deleted from list" }))
       .catch((err) => res.status(500).json(err));
-    },
+  },
 
     addFriend(req,res) {
       User.findOneAndUpdate(

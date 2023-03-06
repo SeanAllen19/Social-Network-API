@@ -10,9 +10,13 @@ const {
 
 } = require('../../controller/thoughtController')
 
-
+//GET all thoughts
 router.route('/').get(getThoughts).post(createThought)
-
-
+//GET one thought, with ID
+router.route('/:thoughtId').get(getOneThought)
+//PUT/UPDATE one thought with ID
+router.route('/:thoughtId').get(getOneThought).put(updateThought)
+//Delete a thought
+router.route('/:thoughtId').get(getOneThought).delete(deletethought)
 
 module.exports = router;
