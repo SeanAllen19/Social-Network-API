@@ -33,10 +33,33 @@ module.exports = {
             res.status(500).json(err);
         })
     },
+    
     deletethought(req, res) {
         Thought.findOneAndDelete({ _id: req.params.thoughtId })
             .then(()=> res.json({message: "Thought FOUND! Deleted from list"}))
             .catch((err)=> res.status(500).json(err));
     },
+
+    addReaction(req,res) {
+        Thought.findOneAndUpdate(
+            {_id: req.params.thoughtId},
+            { $addToSet: {reactions: req.body}}
+        ).then((thought) =>
+        !thought ? res.status(404).json({message: "No Thought matches that ID, reactions not added"})
+        :res.json(thought)
+        ).catch((err)=> res.status(500).json(err));
+
+    },
+
+    deleteReaction(req,res){
+        const reactionIdValue = req.params.reactionId;
+        Thought.findOneAndUpdate(
+            {_id: req.params.thoughtId},
+            {$pull: {reactions: {reactionId: reactionIdValue } }}
+        ).then((thought) =>
+        !thought ? res.status(400).json({message: 'Didnt matches ID, reaction not deleted'})
+        : res.json(thought)
+        ).catch((err)=> res.status(500).json(err))
+    }
 
 }
